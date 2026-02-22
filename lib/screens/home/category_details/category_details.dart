@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/core/app_styles.dart';
 import 'package:news_app/model/source_response.dart';
+import 'package:news_app/screens/home/category_details/source/source_widget.dart';
+import 'package:news_app/screens/home/widget/main_loading_widget.dart';
 import '../../../api/api_manger.dart';
 
 class CategoryDetails extends StatefulWidget {
@@ -30,9 +32,8 @@ class _CategoryDetailsState extends State<CategoryDetails> {
       builder: (context, snapshot) {
         /// 🔄 Loading
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return MainLoadingWidget();
+
         }
 
         /// ❌ Network Error / Connection failed
@@ -93,18 +94,8 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           }
 
           /// ✅ Success
-          List<Sources>? sourcesList = snapshot.data!.sources??[];
-          return ListView.builder(
-            itemCount: sourcesList.length,
-            itemBuilder: (context, index) {
-              return  Text(
-                  sourcesList[index].name??'',
-                  style: AppStyles.bold16Black,
-                );
-
-
-            },
-          );
+          List<Source>? sourcesList = snapshot.data!.sources??[];
+          return SourceWidget(sourcesList: sourcesList,);
         }
 
         /// ⚠️ Fallback
