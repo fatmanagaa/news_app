@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/core/extensions/context_extensions.dart';
 
 import '../../core/app_assets.dart';
 
@@ -13,6 +14,8 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
+    context.pushReplacementNamed('homeScreen');
+
 
     Future.delayed(const Duration(seconds: 5), () {});
   }
