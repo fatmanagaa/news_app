@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/model/source_response.dart';
 import 'package:news_app/screens/home/category_details/source/source_tab.dart';
+import 'package:news_app/screens/home/news/news_widget.dart';
 
 class SourceWidget extends StatefulWidget {
   final List<Source> sourcesList;
@@ -38,6 +39,10 @@ class _SourceWidgetState extends State<SourceWidget> {
               );
             }).toList(),
           ),
+          Expanded(child: NewsWidget(source: widget.sourcesList[selectedIndex]))
+
+
+
         ],
       ),
     );
