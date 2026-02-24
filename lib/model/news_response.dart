@@ -21,13 +21,13 @@ class NewsResponse {
     if (json['articles'] != null) {
       articles = [];
       json['articles'].forEach((v) {
-        articles?.add(news.fromJson(v));
+        articles?.add(News.fromJson(v));
       });
     }
   }
   String? status;
   int? totalResults;
-  List<news>? articles;
+  List<News>? articles;
   String?code;
   String?message;
 
@@ -52,8 +52,8 @@ class NewsResponse {
 /// publishedAt : "2026-02-10T16:10:27Z"
 /// content : "Over the weekend, bitcoin miner Cango sold 4,451 bitcoin for around $305 million. According to a company press release, the sale was completed to partially pay down a bitcoin-collateralized loan. Add… [+3923 chars]"
 
-class news {
-  news({
+class News {
+  News({
       this.source, 
       this.author, 
       this.title, 
@@ -63,7 +63,7 @@ class news {
       this.publishedAt, 
       this.content,});
 
-  news.fromJson(dynamic json) {
+  News.fromJson(dynamic json) {
     source = json['source'] != null ? Source.fromJson(json['source']) : null;
     author = json['author'];
     title = json['title'];
