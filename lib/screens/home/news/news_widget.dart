@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+import 'package:news_app/api/api_manger.dart';
+import 'package:news_app/model/news_response.dart';
+import 'package:news_app/model/source_response.dart';
+import 'package:news_app/screens/home/widget/main_error_widget.dart';
+import 'package:news_app/screens/home/widget/main_loading_widget.dart';
+
+class NewsWidget extends StatefulWidget {
+  final Source source;
+
+  const NewsWidget({super.key, required this.source});
+
+  @override
+  State<NewsWidget> createState() => _NewsWidgetState();
+}
+
+class _NewsWidgetState extends State<NewsWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<NewsResponse>(
+      future: ApiManger.getNewsBySourceId(widget.source.id ?? ''),
+      builder: (context,snapshot){
+        if(snapshot.connectionState==ConnectionState.waiting){
+          return MainLoadingWidget();
+        }
+        else if(snapshot.hasError){
+          return MainErrorWidget(errorMsg: 'Something went wrong', onRetry: (){
+            ApiManger.getNewsBySourceId(widget.source.id??'');
+          });
+        }
+        //todo:server=>response=>error,success
+        if(snapshot.data?.status=='error'){
+          return MainErrorWidget(errorMsg: snapshot.data!.message!, onRetry: (){
+            ApiManger.getNewsBySourceId(widget.source.id??'');
+            setState(() {
+
+            });
+          }
+          );
+
+        }
+var newsList=snapshot.data?.articles??[];
+return ListView.builder(itemBuilder:(context,index){
+  return Text(newsList[index].title??'');
+},
+itemCount: newsList.length,
+);}
+    );
+  }
+}
