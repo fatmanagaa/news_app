@@ -16,6 +16,9 @@ class HomeScreen extends StatelessWidget {
 
       ),
       body: CategoryDetails(),
+
+
+
     );
   }
 }
