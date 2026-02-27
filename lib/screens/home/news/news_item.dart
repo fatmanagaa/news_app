@@ -15,6 +15,7 @@ class NewsItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final width=context.width;
     final height=context.height;
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: width*0.02,vertical: height*0.01),
       margin: EdgeInsets.symmetric(horizontal: width*0.02,vertical: height*0.01),

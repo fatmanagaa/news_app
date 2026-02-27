@@ -32,8 +32,13 @@ class AppTheme {
       iconTheme: IconThemeData(color: AppColors.whiteColor),
     ),
     textTheme: TextTheme(
+
       labelLarge: AppStyles.bold16White,
       labelMedium: AppStyles.medium14White,
+      labelSmall: AppStyles.medium14White,
+      headlineMedium: AppStyles.medium24White,
+      headlineLarge: AppStyles.medium20White,
+
     ),
   );
 }
