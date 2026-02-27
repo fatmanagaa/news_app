@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/app_styles.dart';
+import '../../../core/utils/app_styles.dart';
 
 class MainErrorWidget extends StatelessWidget {
   final String errorMsg;

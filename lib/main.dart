@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:news_app/screens/home/home_screen.dart';
 import 'package:news_app/screens/splash_screen/splash_screen.dart';
 
-import 'core/app_routes.dart';
-import 'core/app_theme.dart';
+import 'core/utils/app_routes.dart';
+import 'core/utils/app_theme.dart';
 
 void main() {
   runApp(const MyApp());

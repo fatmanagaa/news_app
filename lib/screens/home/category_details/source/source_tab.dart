@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/app_styles.dart';
+import '../../../../core/utils/app_styles.dart';
 import '../../../../model/source_response.dart';
 
 class SourceTab extends StatelessWidget {

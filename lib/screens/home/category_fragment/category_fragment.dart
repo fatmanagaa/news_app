@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/app_styles.dart';
-import 'package:news_app/core/extensions/context_extensions.dart';
+import 'package:news_app/core/utils/app_styles.dart';
+
 import 'package:news_app/model/category.dart';
 import 'package:news_app/screens/home/category_fragment/category_item.dart';
+
+import '../../../core/utils/extensions/context_extensions.dart';
 
 class CategoryFragment extends StatelessWidget {
   List<Category> categoriesList = [];
