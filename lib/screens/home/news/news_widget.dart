@@ -20,32 +20,35 @@ class _NewsWidgetState extends State<NewsWidget> {
   Widget build(BuildContext context) {
     return FutureBuilder<NewsResponse>(
       future: ApiManger.getNewsBySourceId(widget.source.id ?? ''),
-      builder: (context,snapshot){
-        if(snapshot.connectionState==ConnectionState.waiting){
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return MainLoadingWidget();
-        }
-        else if(snapshot.hasError){
-          return MainErrorWidget(errorMsg: 'Something went wrong', onRetry: (){
-            ApiManger.getNewsBySourceId(widget.source.id??'');
-          });
+        } else if (snapshot.hasError) {
+          return MainErrorWidget(
+            errorMsg: 'Something went wrong',
+            onRetry: () {
+              ApiManger.getNewsBySourceId(widget.source.id ?? '');
+            },
+          );
         }
         //todo:server=>response=>error,success
-        if(snapshot.data?.status=='error'){
-          return MainErrorWidget(errorMsg: snapshot.data!.message!, onRetry: (){
-            ApiManger.getNewsBySourceId(widget.source.id??'');
-            setState(() {
-
-            });
-          }
+        if (snapshot.data?.status == 'error') {
+          return MainErrorWidget(
+            errorMsg: snapshot.data!.message!,
+            onRetry: () {
+              ApiManger.getNewsBySourceId(widget.source.id ?? '');
+              setState(() {});
+            },
           );
-
         }
-var newsList=snapshot.data?.articles??[];
-return ListView.builder(itemBuilder:(context,index){
-  return NewsItem(news: newsList[index],);
-},
-itemCount: newsList.length,
-);}
+        var newsList = snapshot.data?.articles ?? [];
+        return ListView.builder(
+          itemBuilder: (context, index) {
+            return NewsItem(news: newsList[index]);
+          },
+          itemCount: newsList.length,
+        );
+      },
     );
   }
 }

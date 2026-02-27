@@ -30,13 +30,13 @@ class _CategoryDetailsState extends State<CategoryDetails> {
     return FutureBuilder<SourceResponse>(
       future: _sourcesFuture,
       builder: (context, snapshot) {
-        /// 🔄 Loading
+        ///  Loading
         if (snapshot.connectionState == ConnectionState.waiting) {
           return MainLoadingWidget();
 
         }
 
-        /// ❌ Network Error / Connection failed
+        /// Network Error / Connection failed
         else if (snapshot.hasError) {
           return Center(
             child: Column(
@@ -51,7 +51,7 @@ class _CategoryDetailsState extends State<CategoryDetails> {
                 ElevatedButton(
                   onPressed: () {
                     setState(() {
-                      _fetchSources(); // Retry
+                      _fetchSources(); ///Retry
                     });
                   },
                   child: Text(
@@ -64,9 +64,9 @@ class _CategoryDetailsState extends State<CategoryDetails> {
           );
         }
 
-        /// 📦 API Response وصل
+        ///Api Response Arrived
         else if (snapshot.hasData) {
-          /// ❌ API Error (status مش ok)
+          /// API Error (status مش ok)
           if (snapshot.data!.status != 'ok') {
             return Center(
               child: Column(
@@ -93,12 +93,12 @@ class _CategoryDetailsState extends State<CategoryDetails> {
             );
           }
 
-          /// ✅ Success
+          ///  Success
           List<Source>? sourcesList = snapshot.data!.sources??[];
           return SourceWidget(sourcesList: sourcesList,);
         }
 
-        /// ⚠️ Fallback
+        ///  Fallback
         return const Center(child: Text("No Data"));
       },
     );
