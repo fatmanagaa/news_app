@@ -24,25 +24,19 @@ class CategoryItem extends StatelessWidget {
           child: Image.asset(category.image),
         ),
         Container(
-        decoration: BoxDecoration(
-        color: AppColors.greyColor,
-        borderRadius: BorderRadius.circular(84),
-        ),
+          decoration: BoxDecoration(
+            color: AppColors.greyColor,
+            borderRadius: BorderRadius.circular(84),
+          ),
           margin: EdgeInsets.symmetric(
             horizontal: width * 0.04,
             vertical: height * 0.02,
           ),
           padding: EdgeInsetsDirectional.only(
-
             start: width * 0.02,
             end: width * 0.02,
-          )
-
-
-
-
-          ,child: Row(
-
+          ),
+          child: Row(
             textDirection: (index % 2 == 0)
                 ? TextDirection.ltr
                 : TextDirection.rtl,
@@ -56,8 +50,9 @@ class CategoryItem extends StatelessWidget {
                 radius: 25,
                 backgroundColor: Theme.of(context).primaryColor,
                 child: Icon(
-                  (index % 2 == 0)?
-                  Icons.arrow_forward_ios_outlined:Icons.arrow_back_ios,
+                  (index % 2 == 0)
+                      ? Icons.arrow_forward_ios_outlined
+                      : Icons.arrow_back_ios,
                   color: Theme.of(context).splashColor,
                 ),
               ),
