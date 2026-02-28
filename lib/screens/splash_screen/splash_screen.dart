@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/extensions/context_extensions.dart';
 
-import '../../core/app_assets.dart';
+
+import '../../core/utils/app_assets.dart';
+import '../../core/utils/extensions/context_extensions.dart';
 
 
 class SplashScreen extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_app/core/app_styles.dart';
+import 'package:news_app/core/utils/app_styles.dart';
 import 'package:news_app/screens/home/category_fragment/category_fragment.dart';
 
 
